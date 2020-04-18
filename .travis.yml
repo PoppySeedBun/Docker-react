@@ -7,9 +7,14 @@ before_install:
 script:
 - docker run -e CI=true 1earndocker/docker-react npm run test
 deploy:
-  provider: heroku
-  api_key:
-    secure: seBbZ0kWLi3Bx7FD5I2CXIaRYSsirv7ycCpyMlXgCX66carBSIpJCvcwdOCJWw6/VGvYOEAP809wtFvw3rJp//zp2CXn8lNHkKq23jZkqHiwwjUx3LSI99IVKDE0ZNcNobfMk1ZB5tIybSr4pNnduWv5dqrbE/XBMRIUwrbxBWr78osE2wXiTrIWw+l3HgnhKv4+i87R3lnG3NJsQq1lTmoL9oIP1qI8PFYU92eWFeb9d0KbOWC9ZvECXPRO7vYd2WSAThxRNKP7t8fnOipBgDR9VbrWFje0tieFVKGFQSkM7SsysMFu+ke5XEdqLfiwxuP0we0u1ZI2+/yRfAarhJEMIswLY3+xFL+NE0sNBILlA8IkjpRzJAdxqo/Rqt3HrerVRL58eVZHZmy4yywBnc3XyQHn1i7W6pPgF4U0QddxrcsSHcXQJekM0nXsBpoyi/uLKCq7WInxurb18iLPy9WzJXwH6fuRlgC7jOU4T1rzbpgob9o8+9Fl8gvP2oZKQSFtfnRXcDvg25Iv/r9rKcVsndA1z8368ySfwiTSyGi2J9k47N/Nr5ETOyZ9Tp9bphezmKCfq9PSJ46QkVtV08kN6GipTciYTEM6RAzjqLaVhOlT72bAuduGypWJAkZK6Q5rXHKft2nwvBf50j3d81jmmof2Kqbqdn1i2xJHCwg=
-  app: test-docker0 
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "Docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-us-east-2-721870575946"
+  bucket_path: "Docker-react"
   on:
-    repo: PoppySeedBun/Docker-react
+    branch: master
+
+  access_key_id: $AWS_access_key
+  secret_access_key: $AWS_secret_key
